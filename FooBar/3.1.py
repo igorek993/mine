@@ -1,14 +1,18 @@
 def solution(x, y):
     generation = 0
     tuple_to_find = (x, y)
-    current_list = [['1', '1']]
-    while generation < int(x) and generation < int(y):
+    current_list = [('1', '1')]
+    if tuple_to_find == current_list[0]:
+        return '0'
+    while (generation < int(x)) or (generation < int(y)):
         generation += 1
         new_list = get_next_list(current_list)
         if compare_list(new_list, tuple_to_find):
             return str(generation)
         else:
             current_list = new_list
+            print(len(current_list))
+            print(generation)
             new_list = list()
     else:
         return 'impossible'
@@ -27,5 +31,3 @@ def get_next_list(current_list):
             position = position - 1
     return new_list
 
-
-print(solution('2', '4'))
