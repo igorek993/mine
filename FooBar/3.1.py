@@ -1,16 +1,21 @@
 def solution(x, y):
-    generation = 1
-    number_to_find = (x, y)
-    if x == ('1' or '2') or y == ('1' or '2'):
-        return '1'
-    current_list = [['1', '2']]
-    while True:
+    generation = 0
+    tuple_to_find = (x, y)
+    current_list = [['1', '1']]
+    while generation < int(x) and generation < int(y):
+        generation += 1
         new_list = get_next_list(current_list)
-        # TODO check fun here
+        if compare_list(new_list, tuple_to_find):
+            return str(generation)
+        else:
+            current_list = new_list
+            new_list = list()
+    else:
+        return 'impossible'
 
-        current_list = new_list
-        new_list = list()
-        print(current_list)
+
+def compare_list(_list, tuple_to_compare):
+    return True if tuple_to_compare in _list or tuple_to_compare[::-1] in _list else False
 
 
 def get_next_list(current_list):
@@ -23,4 +28,4 @@ def get_next_list(current_list):
     return new_list
 
 
-print(solution('4', '7'))
+print(solution('2', '4'))
