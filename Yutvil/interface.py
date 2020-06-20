@@ -2,24 +2,36 @@
 
 import tkinter as tk
 from tkinter.filedialog import asksaveasfile
+
+import PIL
+
 from Yutvil.sale_agreement_mailmerge import SaleAgreement
+from PIL import ImageTk, Image
 
 FONT = "Courier", 18
 
+BUTTONS_BG = "#C3DDFE"
+BUTTONS_FONT_COLOR = "black"
+
 root = tk.Tk()
 root.iconbitmap("C:\\Users\igorek\PycharmProjects\mine\Yutvil\logo.ico")
+root.config(background="#C3DDFE")
 root.geometry("1200x768")
 root.title("ДОГОВОР ОКАЗАНИЯ УСЛУГ")
 root.resizable(height=False, width=False)
+canvas = tk.Canvas(root, width=1200, height=768)
+image = ImageTk.PhotoImage(Image.open("BG.png"))
+canvas.create_image(0, 0, anchor="nw", image=image)
+# canvas.pack()
 
-contract_number_label = tk.Label(root, text="Номер договора:")
+contract_number_label = tk.Label(root, text="Номер договора:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 contract_number_label.config(font=FONT, width=15)
 contract_number_label.place(relx=0.0, rely=0.01, anchor='nw')
 
 contract_number_entry = tk.Entry(root, width=10, font=FONT)
 contract_number_entry.place(relx=0.22, rely=0.01, anchor='nw')
 
-date_label = tk.Label(root, text="Дата: День")
+date_label = tk.Label(root, text="Дата: День", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 date_label.config(font=FONT)
 date_label.place(relx=0.36, rely=0.01, anchor='nw')
 
@@ -31,7 +43,7 @@ todays_day_drop = tk.OptionMenu(root, today_day, "01", "02", "03", "04", "05", "
 todays_day_drop.config(font=FONT)
 todays_day_drop.place(relx=0.51, rely=0.0, anchor='nw')
 
-month_label = tk.Label(root, text="Месяц")
+month_label = tk.Label(root, text="Месяц", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 month_label.config(font=FONT)
 month_label.place(relx=0.59, rely=0.01, anchor='nw')
 
@@ -42,7 +54,7 @@ month_drop = tk.OptionMenu(root, month_text, "января", "февраля", "
 month_drop.config(font=FONT)
 month_drop.place(relx=0.67, rely=0.0, anchor='nw')
 
-year_label = tk.Label(root, text="Год")
+year_label = tk.Label(root, text="Год", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 year_label.config(font=FONT)
 year_label.place(relx=0.80, rely=0.01, anchor='nw')
 
@@ -53,7 +65,7 @@ year_drop = tk.OptionMenu(root, year_text, "2020", "2021", "2022", "2023", "2024
 year_drop.config(font=FONT)
 year_drop.place(relx=0.85, rely=0.0, anchor='nw')
 
-passport_details_label = tk.Label(root, text="Паспортные данные:")
+passport_details_label = tk.Label(root, text="Паспортные данные:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 passport_details_label.config(font=FONT)
 passport_details_label.place(relx=0.0, rely=0.07, anchor='nw')
 
@@ -63,14 +75,14 @@ sex_drop = tk.OptionMenu(root, sex, "М", "Ж")
 sex_drop.config(font=FONT)
 sex_drop.place(relx=0.25, rely=0.06, anchor='nw')
 
-full_name_label = tk.Label(root, text="ФИО:")
+full_name_label = tk.Label(root, text="ФИО:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 full_name_label.config(font=FONT)
 full_name_label.place(relx=0.32, rely=0.07, anchor='nw')
 
 full_name_entry = tk.Entry(root, width=40, font=FONT)
 full_name_entry.place(relx=0.40, rely=0.07, anchor='nw')
 
-date_of_birth_label = tk.Label(root, text="Дата рождения:")
+date_of_birth_label = tk.Label(root, text="Дата рождения:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 date_of_birth_label.config(font=FONT)
 date_of_birth_label.place(relx=0.14, rely=0.14, anchor='nw')
 
@@ -79,30 +91,30 @@ date_of_birth_text.set("ДД.ММ.ГГГГ")
 date_of_birth_entry = tk.Entry(root, textvariable=date_of_birth_text, width=10, font=FONT)
 date_of_birth_entry.place(relx=0.37, rely=0.14, anchor='nw')
 
-locality_label = tk.Label(root, text="Место рождения:")
+locality_label = tk.Label(root, text="Место рождения:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 locality_label.config(font=FONT)
 locality_label.place(relx=0.54, rely=0.14, anchor='nw')
 
 locality_text = tk.StringVar()
 locality_text.set("Гор. Название")
 locality_entry = tk.Entry(root, textvariable=locality_text, width=15, font=FONT)
-locality_entry.place(relx=0.75, rely=0.14, anchor='nw')
+locality_entry.place(relx=0.77, rely=0.14, anchor='nw')
 
-passport_series_label = tk.Label(root, text="Серия паспорта:")
+passport_series_label = tk.Label(root, text="Серия паспорта:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 passport_series_label.config(font=FONT)
 passport_series_label.place(relx=0.14, rely=0.21, anchor='nw')
 
 passport_series_entry = tk.Entry(root, width=10, font=FONT)
 passport_series_entry.place(relx=0.37, rely=0.21, anchor='nw')
 
-passport_number_label = tk.Label(root, text="Номер паспорта:")
+passport_number_label = tk.Label(root, text="Номер паспорта:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 passport_number_label.config(font=FONT)
 passport_number_label.place(relx=0.54, rely=0.21, anchor='nw')
 
 passport_number_entry = tk.Entry(root, width=15, font=FONT)
-passport_number_entry.place(relx=0.75, rely=0.21, anchor='nw')
+passport_number_entry.place(relx=0.77, rely=0.21, anchor='nw')
 
-passport_issue_date_label = tk.Label(root, text="Дата выдачи:")
+passport_issue_date_label = tk.Label(root, text="Дата выдачи:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 passport_issue_date_label.config(font=FONT)
 passport_issue_date_label.place(relx=0.14, rely=0.28, anchor='nw')
 
@@ -111,28 +123,28 @@ passport_issue_date_text.set("ДД.ММ.ГГГГ")
 passport_issue_date_entry = tk.Entry(root, textvariable=passport_issue_date_text, width=10, font=FONT)
 passport_issue_date_entry.place(relx=0.37, rely=0.28, anchor='nw')
 
-kod_podrazdelenia_label = tk.Label(root, text="Код подразделения:")
+kod_podrazdelenia_label = tk.Label(root, text="Код подразделения:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 kod_podrazdelenia_label.config(font=FONT)
 kod_podrazdelenia_label.place(relx=0.54, rely=0.28, anchor='nw')
 
 kod_podrazdelenia_entry = tk.Entry(root, width=15, font=FONT)
-kod_podrazdelenia_entry.place(relx=0.79, rely=0.28, anchor='nw')
+kod_podrazdelenia_entry.place(relx=0.77, rely=0.28, anchor='nw')
 
-who_issued_passport_label = tk.Label(root, text="Где выдан:")
+who_issued_passport_label = tk.Label(root, text="Где выдан:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 who_issued_passport_label.config(font=FONT)
 who_issued_passport_label.place(relx=0.14, rely=0.35, anchor='nw')
 
 who_issued_passport_entry = tk.Entry(root, width=44, font=FONT)
 who_issued_passport_entry.place(relx=0.37, rely=0.35, anchor='nw')
 
-residential_address_label = tk.Label(root, text="Адрес регистр:")
+residential_address_label = tk.Label(root, text="Адрес регистр:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 residential_address_label.config(font=FONT)
 residential_address_label.place(relx=0.14, rely=0.42, anchor='nw')
 
 residential_address_entry = tk.Entry(root, width=44, font=FONT)
 residential_address_entry.place(relx=0.37, rely=0.42, anchor='nw')
 
-property_type_label = tk.Label(root, text="Тип имущества:")
+property_type_label = tk.Label(root, text="Тип имущества:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 property_type_label.config(font=FONT)
 property_type_label.place(relx=0.55, rely=0.48, anchor='nw')
 
@@ -143,65 +155,66 @@ property_type_drop = tk.OptionMenu(root, property_type_text, "квартира",
 property_type_drop.config(font=FONT)
 property_type_drop.place(relx=0.75, rely=0.47, anchor='nw')
 
-property_address_label = tk.Label(root, text="Адресс имущества:")
+property_address_label = tk.Label(root, text="Адресс имущества:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 property_address_label.config(font=FONT)
 property_address_label.place(relx=0.0, rely=0.48, anchor='nw')
 
 property_address_entry = tk.Entry(root, width=23, font=FONT)
 property_address_entry.place(relx=0.23, rely=0.48, anchor='nw')
 
-deposit_sum_label = tk.Label(root, text="Сумма задатка «Потенциальному продавцу»:")
+deposit_sum_label = tk.Label(root, text="Сумма задатка «Потенциальному продавцу»:", bg=BUTTONS_BG,
+                             fg=BUTTONS_FONT_COLOR)
 deposit_sum_label.config(font=FONT)
 deposit_sum_label.place(relx=0.0, rely=0.55, anchor='nw')
 
 deposit_sum_entry = tk.Entry(root, width=20, font=FONT)
 deposit_sum_entry.place(relx=0.50, rely=0.55, anchor='nw')
 
-rubley_label = tk.Label(root, text="руб;")
+rubley_label = tk.Label(root, text="руб;", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 rubley_label.config(font=FONT)
 rubley_label.place(relx=0.75, rely=0.55, anchor='nw')
 
-agent_name_label = tk.Label(root, text="ФИО агента:")
+agent_name_label = tk.Label(root, text="ФИО агента:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 agent_name_label.config(font=FONT)
 agent_name_label.place(relx=0.0, rely=0.62, anchor='nw')
 
-agent_name_entry = tk.Entry(root, width=15, font=FONT)
+agent_name_entry = tk.Entry(root, width=21, font=FONT)
 agent_name_entry.place(relx=0.15, rely=0.62, anchor='nw')
 
-fees_label = tk.Label(root, text="Вознаграждение Риэлтора:")
+fees_label = tk.Label(root, text="Вознаграждение Риэлтора:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 fees_label.config(font=FONT)
-fees_label.place(relx=0.39, rely=0.62, anchor='nw')
+fees_label.place(relx=0.41, rely=0.62, anchor='nw')
 
 fees_entry = tk.Entry(root, width=20, font=FONT)
-fees_entry.place(relx=0.68, rely=0.62, anchor='nw')
+fees_entry.place(relx=0.70, rely=0.62, anchor='nw')
 
-rubley_label = tk.Label(root, text="руб;")
+rubley_label = tk.Label(root, text="руб;", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 rubley_label.config(font=FONT)
-rubley_label.place(relx=0.93, rely=0.62, anchor='nw')
+rubley_label.place(relx=0.94, rely=0.62, anchor='nw')
 
-pre_fees_label = tk.Label(root, text="Вознагр. при подп:")
+pre_fees_label = tk.Label(root, text="Вознагр. при подп:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 pre_fees_label.config(font=FONT)
 pre_fees_label.place(relx=0.0, rely=0.69, anchor='nw')
 
 pre_fees_entry = tk.Entry(root, width=15, font=FONT)
 pre_fees_entry.place(relx=0.22, rely=0.69, anchor='nw')
 
-rubley_label = tk.Label(root, text="руб;")
+rubley_label = tk.Label(root, text="руб;", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 rubley_label.config(font=FONT)
 rubley_label.place(relx=0.41, rely=0.69, anchor='nw')
 
-end_fees_label = tk.Label(root, text="Вознагр. остаток:")
+end_fees_label = tk.Label(root, text="Вознагр. остаток:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 end_fees_label.config(font=FONT)
 end_fees_label.place(relx=0.49, rely=0.69, anchor='nw')
 
-end_fees_entry = tk.Entry(root, width=15, font=FONT)
+end_fees_entry = tk.Entry(root, width=20, font=FONT)
 end_fees_entry.place(relx=0.70, rely=0.69, anchor='nw')
 
-rubley_label = tk.Label(root, text="руб;")
+rubley_label = tk.Label(root, text="руб;", bg=BUTTONS_BG)
 rubley_label.config(font=FONT)
-rubley_label.place(relx=0.89, rely=0.69, anchor='nw')
+rubley_label.place(relx=0.94, rely=0.69, anchor='nw')
 
-contract_end_day_label = tk.Label(root, text="Договор действителен до:")
+contract_end_day_label = tk.Label(root, text="Договор действителен до:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 contract_end_day_label.config(font=FONT)
 contract_end_day_label.place(relx=0.0, rely=0.76, anchor='nw')
 
@@ -213,7 +226,7 @@ end_day_drop = tk.OptionMenu(root, end_day, "01", "02", "03", "04", "05", "06", 
 end_day_drop.config(font=FONT)
 end_day_drop.place(relx=0.29, rely=0.75, anchor='nw')
 
-end_month_label = tk.Label(root, text="Месяц")
+end_month_label = tk.Label(root, text="Месяц", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 end_month_label.config(font=FONT)
 end_month_label.place(relx=0.36, rely=0.76, anchor='nw')
 
@@ -224,7 +237,7 @@ end_month_drop = tk.OptionMenu(root, end_month, "января", "февраля"
 end_month_drop.config(font=FONT)
 end_month_drop.place(relx=0.44, rely=0.75, anchor='nw')
 
-end_year_label = tk.Label(root, text="Год")
+end_year_label = tk.Label(root, text="Год", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 end_year_label.config(font=FONT)
 end_year_label.place(relx=0.56, rely=0.76, anchor='nw')
 
@@ -235,14 +248,14 @@ end_year_drop = tk.OptionMenu(root, end_year_text, "2020", "2021", "2022", "2023
 end_year_drop.config(font=FONT)
 end_year_drop.place(relx=0.62, rely=0.75, anchor='nw')
 
-phone_label = tk.Label(root, text="Телефон:")
+phone_label = tk.Label(root, text="Телефон:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 phone_label.config(font=FONT)
 phone_label.place(relx=0.0, rely=0.82, anchor='nw')
 
 phone_entry = tk.Entry(root, width=15, font=FONT)
 phone_entry.place(relx=0.1, rely=0.82, anchor='nw')
 
-email_label = tk.Label(root, text="Email:")
+email_label = tk.Label(root, text="Email:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 email_label.config(font=FONT)
 email_label.place(relx=0.0, rely=0.89, anchor='nw')
 
@@ -268,7 +281,7 @@ def get_sex_gender(sex):
 
 doc = SaleAgreement()
 
-save_doc = tk.Button(root, padx=50, fg="red", pady=20, text="Сохранить договор", command=lambda: doc.save_doc(
+save_doc = tk.Button(root, padx=50, fg="red", pady=30, text="Сохранить договор", command=lambda: doc.save_doc(
     full_name_entry.get(),
     agent_name=agent_name_entry.get(), property_address=property_address_entry.get(),
     contract_number=contract_number_entry.get(), who_issued_passport=who_issued_passport_entry.get(),
@@ -282,6 +295,6 @@ save_doc = tk.Button(root, padx=50, fg="red", pady=20, text="Сохранить 
     birth_date=date_of_birth_entry.get(), todays_day=today_day.get(), full_name=full_name_entry.get(),
     pre_fees=pre_fees_entry.get(), phone=phone_entry.get(), contract_end_year=end_year_text.get(),
     imenuyemi_aya=get_sex_gender(sex.get())))
-save_doc.place(relx=0.30, rely=0.85, anchor='nw')
+save_doc.place(relx=0.3, rely=0.82, anchor='nw')
 
 root.mainloop()
