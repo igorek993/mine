@@ -2,27 +2,24 @@
 
 import tkinter as tk
 from tkinter.filedialog import asksaveasfile
-
-import PIL
-
-from Yutvil.sale_agreement_mailmerge import SaleAgreement
+from sale_agreement_mailmerge import SaleAgreement
 from PIL import ImageTk, Image
 
 FONT = "Courier", 18
 
-BUTTONS_BG = "#C3DDFE"
+BUTTONS_BG = "#cccccc"
 BUTTONS_FONT_COLOR = "black"
 
 root = tk.Tk()
-root.iconbitmap("C:\\Users\igorek\PycharmProjects\mine\Yutvil\logo.ico")
+root.iconbitmap("data\logo.ico")
 root.config(background="#C3DDFE")
 root.geometry("1200x768")
 root.title("ДОГОВОР ОКАЗАНИЯ УСЛУГ")
 root.resizable(height=False, width=False)
 canvas = tk.Canvas(root, width=1200, height=768)
-image = ImageTk.PhotoImage(Image.open("BG.png"))
+image = ImageTk.PhotoImage(Image.open("data\BG.png"))
 canvas.create_image(0, 0, anchor="nw", image=image)
-# canvas.pack()
+canvas.pack()
 
 contract_number_label = tk.Label(root, text="Номер договора:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 contract_number_label.config(font=FONT, width=15)

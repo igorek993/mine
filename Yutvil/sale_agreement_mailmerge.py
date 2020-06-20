@@ -7,7 +7,7 @@ from tkinter.filedialog import asksaveasfile
 from mailmerge import MailMerge
 from datetime import date
 
-TEMPLATE = "C:\\Users\igorek\PycharmProjects\mine\Yutvil\sale_agreement_new.docx"
+TEMPLATE = "data\sale_agreement_new.docx"
 
 
 class SaleAgreement:
