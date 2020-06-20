@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import tkinter as tk
+from Yutvil.sale_agreement_mailmerge import SaleAgreement
 
 FONT = "Courier", 18
 
@@ -21,9 +22,9 @@ date_label = tk.Label(root, text="Дата: День")
 date_label.config(font=FONT)
 date_label.place(relx=0.36, rely=0.01, anchor='nw')
 
-day = tk.StringVar()
-day.set("01")
-todays_day_drop = tk.OptionMenu(root, day, "01", "02", "03", "04", "05", "06", "07",
+today_day = tk.StringVar()
+today_day.set("01")
+todays_day_drop = tk.OptionMenu(root, today_day, "01", "02", "03", "04", "05", "06", "07",
                                 "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"
                                 , "23", "24", "25", "26", "27", "28", "29", "30", "31")
 todays_day_drop.config(font=FONT)
@@ -33,9 +34,9 @@ month_label = tk.Label(root, text="Месяц")
 month_label.config(font=FONT)
 month_label.place(relx=0.59, rely=0.01, anchor='nw')
 
-month = tk.StringVar()
-month.set("января")
-month_drop = tk.OptionMenu(root, month, "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
+month_text = tk.StringVar()
+month_text.set("января")
+month_drop = tk.OptionMenu(root, month_text, "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
                            "августа", "сентября", "октября", "ноября", "декабря")
 month_drop.config(font=FONT)
 month_drop.place(relx=0.67, rely=0.0, anchor='nw')
@@ -44,9 +45,9 @@ year_label = tk.Label(root, text="Год")
 year_label.config(font=FONT)
 year_label.place(relx=0.80, rely=0.01, anchor='nw')
 
-year = tk.StringVar()
-year.set("2020")
-year_drop = tk.OptionMenu(root, year, "2020", "2021", "2022", "2023", "2024", "2025", "2026",
+year_text = tk.StringVar()
+year_text.set("2020")
+year_drop = tk.OptionMenu(root, year_text, "2020", "2021", "2022", "2023", "2024", "2025", "2026",
                           "2027", "2028", "2029", "2030")
 year_drop.config(font=FONT)
 year_drop.place(relx=0.85, rely=0.0, anchor='nw')
@@ -163,8 +164,8 @@ agent_name_label = tk.Label(root, text="ФИО агента:")
 agent_name_label.config(font=FONT)
 agent_name_label.place(relx=0.0, rely=0.62, anchor='nw')
 
-agent_name = tk.Entry(root, width=15, font=FONT)
-agent_name.place(relx=0.15, rely=0.62, anchor='nw')
+agent_name_entry = tk.Entry(root, width=15, font=FONT)
+agent_name_entry.place(relx=0.15, rely=0.62, anchor='nw')
 
 fees_label = tk.Label(root, text="Вознаграждение Риэлтора:")
 fees_label.config(font=FONT)
@@ -180,7 +181,6 @@ rubley_label.place(relx=0.93, rely=0.62, anchor='nw')
 pre_fees_label = tk.Label(root, text="Вознагр. при подп:")
 pre_fees_label.config(font=FONT)
 pre_fees_label.place(relx=0.0, rely=0.69, anchor='nw')
-
 
 pre_fees_entry = tk.Entry(root, width=15, font=FONT)
 pre_fees_entry.place(relx=0.22, rely=0.69, anchor='nw')
@@ -204,11 +204,11 @@ contract_end_day_label = tk.Label(root, text="Договор действите�
 contract_end_day_label.config(font=FONT)
 contract_end_day_label.place(relx=0.0, rely=0.76, anchor='nw')
 
-day = tk.StringVar()
-day.set("01")
-end_day_drop = tk.OptionMenu(root, day, "01", "02", "03", "04", "05", "06", "07",
-                                "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"
-                                , "23", "24", "25", "26", "27", "28", "29", "30", "31")
+end_day = tk.StringVar()
+end_day.set("01")
+end_day_drop = tk.OptionMenu(root, end_day, "01", "02", "03", "04", "05", "06", "07",
+                             "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"
+                             , "23", "24", "25", "26", "27", "28", "29", "30", "31")
 end_day_drop.config(font=FONT)
 end_day_drop.place(relx=0.29, rely=0.75, anchor='nw')
 
@@ -219,7 +219,7 @@ end_month_label.place(relx=0.36, rely=0.76, anchor='nw')
 end_month = tk.StringVar()
 end_month.set("января")
 end_month_drop = tk.OptionMenu(root, end_month, "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
-                           "августа", "сентября", "октября", "ноября", "декабря")
+                               "августа", "сентября", "октября", "ноября", "декабря")
 end_month_drop.config(font=FONT)
 end_month_drop.place(relx=0.44, rely=0.75, anchor='nw')
 
@@ -227,13 +227,12 @@ end_year_label = tk.Label(root, text="Год")
 end_year_label.config(font=FONT)
 end_year_label.place(relx=0.56, rely=0.76, anchor='nw')
 
-year = tk.StringVar()
-year.set("2020")
-end_year_drop = tk.OptionMenu(root, year, "2020", "2021", "2022", "2023", "2024", "2025", "2026",
-                          "2027", "2028", "2029", "2030")
+end_year_text = tk.StringVar()
+end_year_text.set("2020")
+end_year_drop = tk.OptionMenu(root, end_year_text, "2020", "2021", "2022", "2023", "2024", "2025", "2026",
+                              "2027", "2028", "2029", "2030")
 end_year_drop.config(font=FONT)
 end_year_drop.place(relx=0.62, rely=0.75, anchor='nw')
-
 
 phone_label = tk.Label(root, text="Телефон:")
 phone_label.config(font=FONT)
@@ -248,5 +247,39 @@ email_label.place(relx=0.0, rely=0.89, anchor='nw')
 
 email_entry = tk.Entry(root, width=15, font=FONT)
 email_entry.place(relx=0.10, rely=0.89, anchor='nw')
+
+
+def get_property_gender(property_type):
+    if property_type == ("квартира" or "комната"):
+        return "расположенная"
+    elif property_type == "нежилое помещение":
+        return "расположенное"
+    elif property_type == ("жилой дом" or "земельный участок"):
+        return "расположенный"
+
+
+def get_sex_gender(sex):
+    if sex == "М":
+        return "именуемый"
+    elif sex == "Ж":
+        return "именуемая"
+
+
+doc = SaleAgreement()
+
+save_doc = tk.Button(root, padx=50, fg="red", pady=20, text="Сохранить договор", command=lambda: doc.save_doc(
+    agent_name=agent_name_entry.get(), property_address=property_address_entry.get(),
+    contract_number=contract_number_entry.get(), who_issued_passport=who_issued_passport_entry.get(),
+    deposit_sum=deposit_sum_entry.get(), locality=locality_entry.get(), passport_release_date=
+    passport_issue_date_entry.get(), kod_podrazdelenia=kod_podrazdelenia_entry.get(), contract_end_month=
+    end_month.get(), residential_address=residential_address_entry.get(), passport_series=passport_series_entry.get(),
+    email=email_entry.get(), raspoloshenii_aya=get_property_gender(property_type_text.get()),
+    contract_end_day=end_day.get(),
+    month=month_text.get(), end_fees=end_fees_entry.get(), passport_number=passport_number_entry.get(),
+    todays_year=year_text.get(), fees=fees_entry.get(), property_type=property_type_text.get(),
+    birth_date=date_of_birth_entry.get(), todays_day=today_day.get(), full_name=full_name_entry.get(),
+    pre_fees=pre_fees_entry.get(), phone=phone_entry.get(), contract_end_year=end_year_text.get(),
+    imenuyemi_aya=get_sex_gender(sex.get())))
+save_doc.place(relx=0.30, rely=0.85, anchor='nw')
 
 root.mainloop()
