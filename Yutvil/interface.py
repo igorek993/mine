@@ -239,14 +239,14 @@ end_month_drop.place(relx=0.44, rely=0.75, anchor='nw')
 
 end_year_label = tk.Label(root, text="Год", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 end_year_label.config(font=FONT)
-end_year_label.place(relx=0.56, rely=0.76, anchor='nw')
+end_year_label.place(relx=0.58, rely=0.76, anchor='nw')
 
 end_year_text = tk.StringVar()
 end_year_text.set("2020")
 end_year_drop = tk.OptionMenu(root, end_year_text, "2020", "2021", "2022", "2023", "2024", "2025", "2026",
                               "2027", "2028", "2029", "2030")
 end_year_drop.config(font=FONT)
-end_year_drop.place(relx=0.62, rely=0.75, anchor='nw')
+end_year_drop.place(relx=0.64, rely=0.75, anchor='nw')
 
 phone_label = tk.Label(root, text="Телефон:", bg=BUTTONS_BG, fg=BUTTONS_FONT_COLOR)
 phone_label.config(font=FONT)
