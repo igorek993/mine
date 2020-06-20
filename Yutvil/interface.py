@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import tkinter as tk
+from tkinter.filedialog import asksaveasfile
 from Yutvil.sale_agreement_mailmerge import SaleAgreement
 
 FONT = "Courier", 18
@@ -268,6 +269,7 @@ def get_sex_gender(sex):
 doc = SaleAgreement()
 
 save_doc = tk.Button(root, padx=50, fg="red", pady=20, text="Сохранить договор", command=lambda: doc.save_doc(
+    full_name_entry.get(),
     agent_name=agent_name_entry.get(), property_address=property_address_entry.get(),
     contract_number=contract_number_entry.get(), who_issued_passport=who_issued_passport_entry.get(),
     deposit_sum=deposit_sum_entry.get(), locality=locality_entry.get(), passport_release_date=
