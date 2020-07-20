@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import tkinter as tk
-from tkinter.filedialog import asksaveasfile
-from sale_agreement_mailmerge import SaleAgreement
 from PIL import ImageTk, Image
+from sale_agreement_mailmerge import SaleAgreement
 
 FONT = "Courier", 18
 

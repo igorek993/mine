@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
-
 from __future__ import print_function
-
 from tkinter.filedialog import asksaveasfile
-
 from mailmerge import MailMerge
-from datetime import date
 
 TEMPLATE = "data\sale_agreement_new.docx"
 
@@ -19,7 +15,3 @@ class SaleAgreement:
         if path:
             path = path.name
             document.write(path)
-        else:
-            pass
-        # print(document.get_merge_fields())
-        # print(**kwargs)
